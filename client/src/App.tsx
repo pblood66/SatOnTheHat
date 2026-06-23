@@ -5,6 +5,7 @@ import { usePosition, type PositionState } from './hooks/usePosition';
 import { useOverheadPass } from './hooks/useOverheadPass';
 import { useSatellites, type SatelliteState } from './hooks/useSatellites';
 import type { OverheadPass } from './types/satellite';
+import { MapPage } from './pages/MapPage';
 
 function App() {
     const position: PositionState = usePosition();
@@ -14,7 +15,7 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path="/" element={<p>Hello World</p>} />
+                <Route path="/" element={ <MapPage passes={passes} showNames={false}/> }/>
                 <Route path="/debug" element={ <DebugPage position={position} satellites={satellites} overheadPasses={passes}  /> }/>
             </Routes>
         </>
