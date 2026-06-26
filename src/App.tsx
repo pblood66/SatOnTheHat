@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css'
 import { DebugPage } from './pages/DebugPage';
 import { usePosition, type PositionState } from './hooks/usePosition';
@@ -16,7 +16,7 @@ function App() {
         position.location?.lng,
         position.location?.alt,
     ])
-    const satellites: SatelliteState = useSatellites("/data/sat-data.txt");
+    const satellites: SatelliteState = useSatellites(`${import.meta.env.BASE_URL}data/sat-data.txt`);
     const passes: OverheadPass[] = useOverheadPass(satellites.satellites, observer);
 
     return (
@@ -24,6 +24,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<MapPage passes={passes} showNames={false} />} />
                 <Route path="/debug" element={<DebugPage position={position} satellites={satellites} overheadPasses={passes} />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </>
     );
