@@ -6,7 +6,8 @@ import { useSatellites, type SatelliteState } from './hooks/useSatellites';
 import type { OverheadPass } from './types/satellite';
 import { MapPage } from './pages/MapPage';
 import { useMemo } from 'react';
-import { useOverheadPass } from './hooks/UseOverheadPass';
+import { useOverheadPass } from './hooks/useOverheadPass';
+
 
 function App() {
     const position: PositionState = usePosition();

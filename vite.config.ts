@@ -1,9 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
 export default defineConfig({
   base: '/SatOnTheHat/',
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
+  optimizeDeps: {
+    exclude: ['satellite.js']
+  },
+  build: {
+    target: 'esnext',
+    rollupOptions: {
+      external: [],
+    }
+  },
+  worker: {
+    format: 'es'
+  }
 })
