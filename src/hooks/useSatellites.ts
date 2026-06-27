@@ -24,8 +24,8 @@ export const useSatellites = (source: string) => {
                 return res.text();
             })
             .then(raw => {
-                console.log('Raw length:', raw.length);
-                console.log('First 300 chars:', raw.slice(0, 300));
+                // console.log('Raw length:', raw.length);
+                // console.log('First 300 chars:', raw.slice(0, 300));
                 const satellites = parseTLE(raw);
                 console.log('Parsed count:', satellites.length);
                 setState({ satellites, error: null, loading: false });

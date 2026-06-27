@@ -9,7 +9,7 @@ export interface TLERecord {
 
 export const parseTLE = (raw: string): TLERecord[] => {
     const sats: TLERecord[] = [];
-    const data = raw.split("\n").filter(Boolean)
+    const data = raw.split("\n").map(l => l.trim()).filter(Boolean)
 
     for (let i = 0; i < data.length; i += 3) {
         const name = data[i];
@@ -17,7 +17,6 @@ export const parseTLE = (raw: string): TLERecord[] => {
         const line2 = data[i + 2];
 
         if (!name || !line1 || !line2) continue;
-        if (line1.length != 70 || line2.length != 70) continue;
         if (!line1.startsWith('1') || !line2.startsWith('2')) continue;
 
         sats.push({name, line1, line2, satrec: twoline2satrec(line1, line2)});
