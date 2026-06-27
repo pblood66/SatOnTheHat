@@ -13,7 +13,7 @@ export const useSatellites = (source: string) => {
         loading: true
     })
 
-    console.log(`Fetching Satellite Data from ${source}`);
+    // console.log(`Fetching Satellite Data from ${source}`);
 
     useEffect(() => {
         setState(s => ({ ...s, loading: true }));
@@ -27,7 +27,7 @@ export const useSatellites = (source: string) => {
                 // console.log('Raw length:', raw.length);
                 // console.log('First 300 chars:', raw.slice(0, 300));
                 const satellites = parseTLE(raw);
-                console.log('Parsed count:', satellites.length);
+                // console.log('Parsed count:', satellites.length);
                 setState({ satellites, error: null, loading: false });
             })
             .catch(err => {
