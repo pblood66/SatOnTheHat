@@ -27,7 +27,7 @@ export const usePosition = (): PositionState => {
                     location: {
                         lat: pos.coords.latitude,
                         lng: pos.coords.longitude,
-                        alt: (pos.coords.altitude ?? 0) / 1000
+                        alt: (pos.coords.altitude ?? 1.387) / 1000
                     },
                     error: null,
                     loading: false
