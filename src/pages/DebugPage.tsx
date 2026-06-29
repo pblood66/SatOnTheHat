@@ -2,6 +2,7 @@ import { SatelliteList } from "../components/SatelliteList";
 import type { PositionState } from "../hooks/usePosition";
 import type { SatelliteState } from "../hooks/useSatellites";
 import type { OverheadPass } from "../types/satellite";
+import './DebugPage.css'
 
 export interface DebugProps {
     position: PositionState,
@@ -15,7 +16,7 @@ export const DebugPage = (props: DebugProps) => {
     const passes = props.overheadPasses;
 
     return (
-        <div className="app">
+        <div className="debug">
             <header>
                 <h1>Debug</h1>
             </header>

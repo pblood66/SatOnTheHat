@@ -34,6 +34,15 @@ export const SkyMap = ({ passes, showNames = false }: SkyMapProps) => {
     const [hovered, setHovered] = useState<OverheadPass | null>(null);
     const [tooltip, setTooltip] = useState({ x: 0, y: 0 });
 
+    const isDark = true;
+    const bg = isDark ? "#1a1b20" : "#f4f3ec";
+    const ringColor = isDark ? "#2e303a" : "#e5e4e7";
+    const textColor = isDark ? "#6b7280" : "#9ca3af";
+    const accentColor = isDark ? "#c9b24b" : "#ffcb3b";
+    const dotColor = isDark ? "#f3e460" : "#aa3bff";
+    const dotGlow = isDark ? "rgba(199, 139, 83, 0.3)" : "rgba(170,59,255,0.2)";
+    const labelColor = isDark ? "#f3f4f6" : "#08060d";
+    
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -55,14 +64,6 @@ export const SkyMap = ({ passes, showNames = false }: SkyMapProps) => {
             hoverCanvas.style.height = SIZE + "px";
         }
 
-        const isDark = true;
-        const bg = isDark ? "#1a1b20" : "#f4f3ec";
-        const ringColor = isDark ? "#2e303a" : "#e5e4e7";
-        const textColor = isDark ? "#6b7280" : "#9ca3af";
-        const accentColor = isDark ? "#c9b24b" : "#ffcb3b";
-        const dotColor = isDark ? "#f3e460" : "#aa3bff";
-        const dotGlow = isDark ? "rgba(199, 139, 83, 0.3)" : "rgba(170,59,255,0.2)";
-        const labelColor = isDark ? "#f3f4f6" : "#08060d";
 
         ctx.clearRect(0, 0, SIZE, SIZE);
         ctx.fillStyle = bg;
@@ -241,13 +242,13 @@ export const SkyMap = ({ passes, showNames = false }: SkyMapProps) => {
                     padding: "8px 12px",
                     fontSize: 12,
                     fontFamily: "var(--mono)",
-                    color: "var(--text-h)",
+                    color: accentColor,
                     pointerEvents: "none",
                     whiteSpace: "nowrap",
                     zIndex: 10,
                 }}>
                     <div style={{ fontWeight: 600, marginBottom: 4 }}>{hovered.name}</div>
-                    <div style={{ color: "var(--text)", lineHeight: 1.7 }}>
+                    <div style={{ color: textColor, lineHeight: 1.7 }}>
                         Elevation: {hovered.elevation.toFixed(1)}°<br />
                         Azimuth: {hovered.azimuth.toFixed(1)}°<br />
                         Range: {Math.round(hovered.rangeSat)} km<br />
